@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Sweet 17th Alicia Alexandra! 💜</title>
+    <style>
+        /* --- ROOT THEME: SOFT PASTEL PURPLE --- */
+        :root {
+            --bg-smooth: #f4eefc;
+            --purple-light: #e8dbfc;
+            --purple-main: #b794f4;
+            --purple-dark: #5b3e96;
+            --text-color: #4a3b60;
+            --card-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-smooth);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- PHONE WRAPPER --- */
+        .phone-frame {
+            width: 100%;
+            max-width: 420px;
+            height: 90vh;
+            max-height: 840px;
+            background: var(--card-white);
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(91, 62, 150, 0.12);
+            border: 8px solid #ffffff;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-header {
+            padding: 20px 20px 10px 20px;
+            text-align: center;
+            background: var(--card-white);
+            z-index: 10;
+        }
+
+        .app-header h1 {
+            font-size: 1.4rem;
+            color: var(--purple-dark);
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .app-header p {
+            font-size: 0.85rem;
+            color: var(--purple-main);
+            margin: 5px 0 0 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- TABS --- */
+        .tabs-container {
+            display: flex;
+            gap: 5px;
+            padding: 10px 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            background: var(--card-white);
+            border-bottom: 1px solid #f0e6fc;
+        }
+
+        .tabs-container::-webkit-scrollbar { display: none; }
+
+        .tab-item {
+            padding: 8px 16px;
+            background: #f7f3fd;
+            color: var(--purple-dark);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            flex-shrink: 0;
+        }
+
+        .tab-item.active {
+            background: var(--purple-dark);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(91, 62, 150, 0.2);
+        }
+
+        /* --- SLIDER --- */
+        .view-slider {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
+        .page-content {
+            width: 25%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            background: #faf8ff;
+        }
+
+        .envelope-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #f0e6fc;
+            line-height: 1.6;
+        }
+
+        /* --- GALLERY --- */
+        .grid-polaroid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .polaroid {
+            background: #ffffff;
+            padding: 12px 12px 20px 12px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            transform: rotate(-1deg);
+        }
+        .img-wrapper-4-3 {
+            position: relative;
+            width: 100%;
+            padding-top: 75%;
+            overflow: hidden;
+            border-radius: 6px;
+            background-color: var(--purple-light);
+        }
+        .img-wrapper-4-3 img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+        }
+        .polaroid-caption { text-align: center; margin-top: 12px; font-weight: bold; color: #554466; }
+
+        /* --- STATS --- */
+        .card-stats { background: #ffffff; border-radius: 20px; padding: 15px; margin-bottom: 15px; }
+        .progress-container { background: #eee8f7; height: 10px; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--purple-main), var(--purple-dark)); width: 0%; transition: width 1s ease; }
+
+        /* --- MUSIC PLAYER --- */
+        .music-player {
+            background: linear-gradient(135deg, #432b68, #1a122c);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .album-art {
+            width: 55px; height: 55px; background: var(--purple-main);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+        }
+        .music-info { flex-grow: 1; }
+        .music-title { font-size: 0.9rem; font-weight: 700; margin: 0; }
+        .music-artist { font-size: 0.75rem; color: #bfaed6; margin: 3px 0 0 0; }
+
+        .interactive-box {
+            background: #ffffff; border-radius: 20px; padding: 20px; text-align: center;
+            border: 2px dashed var(--purple-light); margin-bottom: 20px;
+        }
+
+        .action-btn {
+            background: var(--purple-dark); color: #ffffff; border: none; padding: 10px 24px;
+            border-radius: 20px; font-weight: 700; cursor: pointer; transition: transform 0.2s;
+        }
+        .action-btn:active { transform: scale(0.95); }
+
+        .bottom-bar { padding: 15px; text-align: center; font-size: 0.75rem; color: #a396b8; border-top: 1px solid #f0e6fc; }
+
+        /* --- ANIMASI BERPUTAR --- */
+        .berputar { animation: spin 3s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="phone-frame">
+        <div class="app-header">
+            <h1>Alicia Alexandra ✨</h1>
+            <p>SWEET SEVENTEEN CHAPTER</p>
+        </div>
+
+        <div class="tabs-container">
+            <button class="tab-item active" onclick="jumpToPage(0)">✉️ Wishes</button>
+            <button class="tab-item" onclick="jumpToPage(1)">📸 Gallery</button>
+            <button class="tab-item" onclick="jumpToPage(2)">📊 Stats</button>
+            <button class="tab-item" onclick="jumpToPage(3)">🎵 Vibe Zone</button>
+        </div>
+
+        <div class="view-slider" id="mainSlider">
+            <div class="page-content">
+                <div class="envelope-card">
+                    <p><b>Dear Alicia,</b></p>
+                    <p>Happy Sweet Seventeen! 💜 17 tahun akhirnya ya. Semoga tahun ini kamu lebih banyak ketawa daripada sedih. Tetep jadi Alicia yang aku kenal, yang kadang nyebelin tapi selalu cantik banget.</p>
+                    <p>Semangat terus cheersnya! Wishing you all the absolute best things in life! 🦄💜</p>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <div class="grid-polaroid">
+                    <div class="polaroid">
+                        <div class="img-wrapper-4-3"><img src="https://cdn.discordapp.com/attachments/1434111588016717876/1510123176103776467/6D19C8C3-9216-4C6A-97C4-A0106EC721E1.jpg" alt="Alicia"></div>
+                        <div class="polaroid-caption">ciaa naa atuu!! </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <div class="card-stats">
+                    <h3 style="margin:0 0 15px 0; color:var(--purple-dark);">Alicia's Level 📊</h3>
+                    <div style="margin-bottom:10px">
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem"><span>Aesthetic</span><span>100%</span></div>
+                        <div class="progress-container"><div class="progress-fill" data-percent="100%"></div></div>
+                    </div>
+                    <div style="margin-bottom:10px">
+                        <div style="display:flex; justify-content:space-between; font-size:0.8rem"><span>Cantik Banget</span><span>1000%</span></div>
+                        <div class="progress-container"><div class="progress-fill" data-percent="100%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <audio id="Hold me tight" src="musikku MP3.mp3" loop></audio>
+
+                <div class="music-player">
+                    <div class="album-art" id="piringanHitam">🎸</div>
+                    <div class="music-info">
+                        <p class="music-title">Favorite Song</p>
+                        <p class="music-artist">Playing for Alicia Alexandra</p>
+                    </div>
+                    <span id="statusIcon">🔇</span>
+                </div>
+
+                <div class="interactive-box">
+                    <p style="font-size:0.85rem; margin-bottom:15px;">Tap to play the song and open your gift! 🎁
+</p>
+                    <button class="action-btn" id="btnKado" onclick="kontrolMusik()">Open the gift & Musik 🎵</button>
+                </div>
+
+                <div class="interactive-box">
+                    <p style="font-size:0.85rem; margin-bottom:15px;">Tap for a hidden message 🤏</p>
+                    <button class="action-btn" onclick="triggerSurprise()">Open message</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">Made with 💜 for Alicia | 2026</div>
+    </div>
+
+    <script>
+        function jumpToPage(pageIndex) {
+            const slider = document.getElementById('mainSlider');
+            slider.style.transform = `translateX(${pageIndex * -25}%)`;
+
+            const tabs = document.querySelectorAll('.tab-item');
+            tabs.forEach((tab, index) => {
+                tab.classList.toggle('active', index === pageIndex);
+            });
+
+            const progressBars = document.querySelectorAll('.progress-fill');
+            if (pageIndex === 2) {
+                progressBars.forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-percent');
+                });
+            } else {
+                progressBars.forEach(bar => bar.style.width = '0%');
+            }
+        }
+
+        function kontrolMusik() {
+            const lagu = document.getElementById('Hold me tight');
+            const piringan = document.getElementById('piringanHitam');
+            const tombol = document.getElementById('btnKado');
+            const icon = document.getElementById('statusIcon');
+
+            if (lagu.paused) {
+                lagu.play().then(() => {
+                    piringan.classList.add('berputar');
+                    tombol.innerText = "Pause Musik ⏸️";
+                    icon.innerText = "🔊";
+                }).catch(e => alert("Pastikan file 'musikku MP3.mp3' ada di folder yang sama!"));
+                
+                alert("Happy Sweet 17th, Alicia Alexandra! 🦄💜");
+            } else {
+                lagu.pause();
+                piringan.classList.remove('berputar');
+                tombol.innerText = "Putar Musik ▶️";
+                icon.innerText = "🔇";
+            }
+        }
+
+        function triggerSurprise() {
+            alert("Fungsinya emang nggak ada, tapi semoga bisa bikin kamu senyum DIKIT🤏 HAHAHAHAA lov u.");
+        }
+    </script>
+</body>
+</html>
